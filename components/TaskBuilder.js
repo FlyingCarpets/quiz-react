@@ -10,7 +10,7 @@ class TaskBuilder extends React.Component {
     }
     componentWillMount() {
         numberList = [];
-        fetch('https://raw.githubusercontent.com/FlyingCarpets/quiz3/master/data/questions2.json')
+        fetch('https://raw.githubusercontent.com/FlyingCarpets/quiz-react/master/data/questions.json')
             .then((response) => response.json())
             .then(json => {
                 this.setState({questions: json});
