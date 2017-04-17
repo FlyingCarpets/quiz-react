@@ -1,2 +1,2 @@
 # quiz-react
-Building a quiz with 'react'
+Building a quiz with React
