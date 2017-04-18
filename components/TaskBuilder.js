@@ -6,7 +6,7 @@ let numberList = [];
 class TaskBuilder extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {questions: [], currentImg: 0, value: ''};
+        this.state = {questions: [], currentImg: 0, value: '', score: 0};
     }
     componentWillMount() {
         numberList = [];
@@ -41,6 +41,11 @@ class TaskBuilder extends React.Component {
         e.preventDefault();
         if(this.state.questions[this.state.currentImg].answer == this.state.value) {
             alert('correct');
+
+            let currentPoints = this.state.score;
+            currentPoints++;
+            this.setState({score: currentPoints});
+
             this.selectNextTask();
         } else {
             alert('try again');
@@ -57,6 +62,10 @@ class TaskBuilder extends React.Component {
         }
         return (
             <div className="container">
+                <div className="float-lg-right">
+                    Your score:
+                    <span>{this.state.score}</span>
+                </div>
                 <h2>What is this instrument called?</h2>
                 <img src={this.state.questions[this.state.currentImg].image} alt=""/>
                 <form onSubmit={this.handleSubmit.bind(this)}>
