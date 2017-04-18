@@ -9,6 +9,9 @@ class TaskBuilder extends React.Component {
         this.state = {questions: [], currentImg: 0, value: '', score: 0, loading: true};
     }
     componentWillMount() {
+        this.fetchData();
+    }
+    fetchData() {
         numberList = [];
         fetch('https://raw.githubusercontent.com/FlyingCarpets/quiz-react/master/data/questions.json')
             .then((response) => response.json())
@@ -32,7 +35,7 @@ class TaskBuilder extends React.Component {
         } else {
             alert('the end');
             this.setState({loading: true});
-            this.componentWillMount();
+            this.fetchData();
         }
         this.setState({currentImg: numberList[taskIndex]});
     }
