@@ -6,7 +6,7 @@ let numberList = [];
 class TaskBuilder extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {questions: [], currentImg: 0, value: '', score: 0};
+        this.state = {questions: [], currentImg: 0, value: '', score: 0, loading: true};
     }
     componentWillMount() {
         numberList = [];
@@ -15,6 +15,7 @@ class TaskBuilder extends React.Component {
             .then(json => {
                 this.setState({questions: json});
                 this.selectRandomTask();
+                this.setState({loading: false});
             });
     }
     selectRandomTask() {
@@ -30,6 +31,7 @@ class TaskBuilder extends React.Component {
             taskIndex++;
         } else {
             alert('the end');
+            this.setState({loading: true});
             this.componentWillMount();
         }
         this.setState({currentImg: numberList[taskIndex]});
@@ -53,30 +55,31 @@ class TaskBuilder extends React.Component {
         this.setState({value: ''});
     }
     render() {
-        if(this.state.questions[this.state.currentImg] === undefined){
+        if(this.state.loading == true){
             return (
                 <div className="container">
                     <h1>Loading...</h1>
                 </div>
             )
-        }
-        return (
-            <div className="container">
-                <div className="float-lg-right">
-                    Your score:
-                    <span>{this.state.score}</span>
-                </div>
-                <h2>What is this instrument called?</h2>
-                <img src={this.state.questions[this.state.currentImg].image} alt=""/>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <div className="form-group">
-                        <input type="text" className="form-control mt-3" placeholder="Answer"
-                               value={this.state.value} onChange={this.handleChange.bind(this)}/>
-                        <button className="btn btn-default mt-3" type="submit">Submit answer</button>
+        } else {
+            return (
+                <div className="container">
+                    <div className="float-lg-right">
+                        Your score:
+                        <span>{this.state.score}</span>
                     </div>
-                </form>
-            </div>
-        )
+                    <h2>What is this instrument called?</h2>
+                    <img src={this.state.questions[this.state.currentImg].image} alt=""/>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                        <div className="form-group">
+                            <input type="text" className="form-control mt-3" placeholder="Answer"
+                                   value={this.state.value} onChange={this.handleChange.bind(this)}/>
+                            <button className="btn btn-default mt-3" type="submit">Submit answer</button>
+                        </div>
+                    </form>
+                </div>
+            )
+        }
     }
 }
 
