@@ -1,3 +1,6 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    path = require('path');
+
 module.exports = {
     entry: './react.js',
     output: {
@@ -15,7 +18,14 @@ module.exports = {
                         presets: ['env', 'es2015', 'react']
                     }
                 }
+            },
+            {
+                test: /\.s?css$/,
+                loaders: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader'})
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('dist/css/style.css')
+    ]
 };

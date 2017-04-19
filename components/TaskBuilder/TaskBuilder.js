@@ -1,5 +1,7 @@
 import React from 'react';
-import { randomizeArray } from '../lib/randomize';
+import ModalWindow from '../ModalWindow/ModalWinddow';
+import { randomizeArray } from '../../lib/randomize';
+import './TaskBuilderStyle.scss';
 
 let numberList = [];
 
@@ -67,6 +69,7 @@ class TaskBuilder extends React.Component {
         } else {
             return (
                 <div className="container">
+                    <ModalWindow/>
                     <div className="float-lg-right">
                         Your score:
                         <span>{this.state.score}</span>
