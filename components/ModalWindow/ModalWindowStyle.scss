@@ -1,3 +1,13 @@
+.modal-backdrop {
+  &.is-active {
+    display: block;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
 .modal {
   &.show {
     display: block;

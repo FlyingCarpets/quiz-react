@@ -8,7 +8,7 @@ let numberList = [];
 class TaskBuilder extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {questions: [], currentImg: 0, value: '', score: 0, loading: true};
+        this.state = {questions: [], currentImg: 0, value: '', score: 0, loading: true, showScore: false};
     }
     componentWillMount() {
         this.fetchData();
@@ -35,7 +35,7 @@ class TaskBuilder extends React.Component {
         if(taskIndex < this.state.questions.length -1) {
             taskIndex++;
         } else {
-            alert('the end');
+            this.setState({showScore: true});
             this.setState({loading: true});
             this.fetchData();
         }
@@ -59,6 +59,9 @@ class TaskBuilder extends React.Component {
         }
         this.setState({value: ''});
     }
+    closeModal() {
+        this.setState({showScore: false});
+    }
     render() {
         if(this.state.loading == true){
             return (
@@ -69,7 +72,10 @@ class TaskBuilder extends React.Component {
         } else {
             return (
                 <div className="container">
-                    <ModalWindow/>
+                    <ModalWindow
+                        showModal={this.state.showScore}
+                        closeModal={this.closeModal.bind(this)}
+                        score={this.state.score}/>
                     <div className="float-lg-right">
                         Your score:
                         <span>{this.state.score}</span>
