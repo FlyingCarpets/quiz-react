@@ -1,0 +1,52 @@
+.body-slideout {
+  #app {
+    height: 100%;
+
+    .app-wrapper {
+      height: 100%;
+
+      .quiz-wrapper {
+        position: relative;
+        left: 0;
+        transition: all 300ms ease;
+
+        &.slide-right {
+          @media (max-width: 1700px) {
+            left: 300px;
+            height: 100%;
+            transition: all 300ms ease;
+          }
+        }
+      }
+
+      .sidebar {
+        position: fixed;
+        width: 300px;
+        height: 100%;
+        left: -300px;
+        background-color: grey;
+        transition: all 300ms ease;
+
+        &.is-open {
+          left: 0;
+          transition: all 300ms ease;
+        }
+      }
+
+      .sidebar-overlay {
+        &.is-active {
+          @media (max-width: 1700px) {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 99;
+            background-color: grey;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}

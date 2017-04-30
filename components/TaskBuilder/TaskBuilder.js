@@ -12,6 +12,7 @@ class TaskBuilder extends React.Component {
     }
     componentWillMount() {
         this.fetchData();
+        document.getElementById('quiz-body').classList.add('body-slideout');
     }
     fetchData() {
         numberList = [];
@@ -62,6 +63,36 @@ class TaskBuilder extends React.Component {
     closeModal() {
         this.setState({showScore: false});
     }
+    bindSidebarActions() {
+        let routerLinks = Array.from(document.getElementsByClassName('router-link'));
+        let quizContainer = document.getElementById('quiz-wrapper');
+        let sidebarMenu = document.getElementById('sidebar');
+        let sidebarOverlay = document.getElementById('overlay');
+
+        this.openSidebar(quizContainer, sidebarMenu, sidebarOverlay);
+
+        routerLinks.map((link) => {
+            link.addEventListener('click', () => {
+                this.closeSidebar(quizContainer, sidebarMenu, sidebarOverlay);
+            })
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            if(quizContainer.classList.contains('slide-right') && sidebarMenu.classList.contains('is-open')) {
+                this.closeSidebar(quizContainer, sidebarMenu, sidebarOverlay);
+             }
+        });
+    }
+    openSidebar(quizContainer, sidebarMenu, sidebarOverlay) {
+        quizContainer.classList.toggle('slide-right');
+        sidebarMenu.classList.toggle('is-open');
+        sidebarOverlay.classList.toggle('is-active');
+    }
+    closeSidebar(quizContainer, sidebarMenu, sidebarOverlay) {
+        quizContainer.classList.remove('slide-right');
+        sidebarMenu.classList.remove('is-open');
+        sidebarOverlay.classList.remove('is-active');
+    }
     render() {
         if(this.state.loading == true){
             return (
@@ -71,12 +102,15 @@ class TaskBuilder extends React.Component {
             )
         } else {
             return (
-                <div className="container">
+                <div className="container quiz-wrapper" id="quiz-wrapper">
+                    <button onClick={this.bindSidebarActions.bind(this)} className="btn">
+                        Menu
+                    </button>
                     <ModalWindow
                         showModal={this.state.showScore}
                         closeModal={this.closeModal.bind(this)}
                         score={this.state.score}/>
-                    <div className="float-lg-right">
+                    <div className="pull-right">
                         Your score:
                         <span>{this.state.score}</span>
                     </div>
@@ -89,6 +123,7 @@ class TaskBuilder extends React.Component {
                             <button className="btn btn-default mt-3" type="submit">Submit answer</button>
                         </div>
                     </form>
+                    <div id="overlay" className="sidebar-overlay"></div>
                 </div>
             )
         }

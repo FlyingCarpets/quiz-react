@@ -1,20 +1,9 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import MenuContainer from './components/MenuContainer/MenuContainer';
 
-import TaskBuilder from './components/TaskBuilder/TaskBuilder';
+import './stylesheets/main.scss';
 
-ReactDOM.render(
-    <Router>
-        <div>
-            <ul>
-                <li><Link to="/music">Music</Link></li>
-                <li><Link to="/visual-art">Visual Art</Link></li>
-                <li><Link to="/literature">Literature</Link></li>
-            </ul>
+const App = () => <MenuContainer/>;
 
-            <Route  path="/music" component={TaskBuilder}/>
-        </div>
-    </Router>,
-    document.getElementById('app')
-);
+ReactDOM.render(<App/>, document.getElementById('app'));

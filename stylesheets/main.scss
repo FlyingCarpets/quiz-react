@@ -1,5 +1,5 @@
 // TODO: import this file to main component
 
-body {
-  background-color: green;
-}
+@import 'vendors/bootstrap';
+@import 'global';
+@import 'sidebar';

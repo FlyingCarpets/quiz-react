@@ -12,7 +12,7 @@ class ModalWinddow extends React.Component {
     render() {
         return (
             <div>
-                <div className={`modal fade ${this.props.showModal ? `show` : `hide` }`} id="app-modal" tabIndex="-1"
+                <div className={`modal fade ${this.props.showModal ? `in` : `hide` }`} id="app-modal" tabIndex="-1"
                      role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
@@ -37,7 +37,7 @@ class ModalWinddow extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={`modal-backdrop fade show ${this.props.showModal ? `is-active` : `is-hidden` }`}></div>
+                <div className={`modal-backdrop fade ${this.props.showModal ? `in is-active` : `is-hidden` }`}></div>
             </div>
         )
     }
