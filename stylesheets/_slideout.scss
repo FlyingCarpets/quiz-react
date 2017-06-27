@@ -1,0 +1,91 @@
+.sidebar {
+  overflow-y: auto;
+
+  .navbar-nav {
+    margin: 0;
+
+    li {
+      a {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        border-bottom: 1px solid red;
+        border-left: 4px solid red;
+        color: white;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+          background-color: green;
+        }
+      }
+
+      &.is-active {
+        a {
+          border-left: 4px solid yellow;
+        }
+      }
+    }
+  }
+
+  .sidebar__close-btn {
+    text-align: right;
+
+    i {
+      font-size: 17px;
+    }
+  }
+
+  .sidebar__helpcenter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 20px 30px 20px;
+    border-top: 1px solid red;
+
+    @media screen and (max-height: 600px) {
+      position: static;
+      border-top: none;
+    }
+
+    .heading-block__helpcenter-section {
+      float: none;
+    }
+  }
+}
+
+.panel:before {
+  content: '';
+  display: block;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.panel-open:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 99;
+}
+
+.slideout-panel {
+  &:before {
+    content: '';
+    display: block;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  &.open {
+    &:before {
+      position: absolute;
+      top: 0;
+
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.69);
+      z-index: 99;
+    }
+  }
+}

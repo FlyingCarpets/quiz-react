@@ -7,7 +7,7 @@ class MenuContainer extends React.Component {
         return (
             <Router>
                 <div className="app-wrapper">
-                    <div id="sidebar" className="sidebar">
+                    <div>
                         Choose task category:
                         <ul>
                             <li><Link to="/music" className="router-link">Music</Link></li>
