@@ -5,26 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>quiz-react</title>
+
+    <!--TODO: add svg fonts-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="dist/css/style.css">
 </head>
-<body id="quiz-body">
+    <body id="quiz-body">
 
-    <nav id="js-sidebar">
-        <header>
-            <h2>Menu</h2>
-        </header>
-        <button id="js-sidebar-close-btn">X</button>
-    </nav>
+        <div id="js-sidebar">
+            <div class="text-center p-t-30 p-b-30">
+                <img src="http://via.placeholder.com/150x70" alt="quiz-logo">
+            </div>
+            <button id="js-sidebar-close-btn" class="btn sidebar__close-btn">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            <ul>
+                <li>[Profile]</li>
+                <li>[Contacts]</li>
+            </ul>
+        </div>
 
-    <main id="js-main-content">
-        <header>
-            <button id="js-sidebar-btn" class="btn">Open menu</button>
+        <main id="js-main-content">
+            <header>
+                <button id="js-sidebar-btn" class="btn">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
 
             <div id="app"></div>
 
-        </header>
-    </main>
+            </header>
+        </main>
 
-<script src="dist/output.js"></script>
-</body>
+    <script src="dist/output.js"></script>
+    </body>
 </html>

@@ -1,6 +1,6 @@
 import Slideout from 'slideout';
 
-class ToggleSidebar {
+class Sidebar {
     constructor() {
         this.initSidebar();
     }
@@ -37,4 +37,4 @@ class ToggleSidebar {
     }
 }
 
-export const toggleSidebar = new ToggleSidebar();
+export const sidebar = new Sidebar();

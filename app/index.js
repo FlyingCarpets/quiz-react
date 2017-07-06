@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import MenuContainer from './components/MenuContainer/MenuContainer';
+import AppContainer from './containers/AppContainer/AppContainer';
 
 import './global';
 
-import './stylesheets/main.scss';
+import '../assets/scss/main.scss';
 
-const App = () => <MenuContainer/>;
+const App = () => <AppContainer/>;
 
 ReactDOM.render(<App/>, document.getElementById('app'));

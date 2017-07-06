@@ -1,18 +1,24 @@
 import React from 'react';
 import ModalWindow from '../ModalWindow/ModalWinddow';
 import { randomizeArray } from '../../lib/randomize';
-import './TaskBuilderStyle.scss';
+import './TaskBuilder.scss';
 
 let numberList = [];
 
 class TaskBuilder extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {questions: [], currentImg: 0, value: '', score: 0, loading: true, showScore: false};
+        this.state = {
+            questions: [],
+            currentImg: 0,
+            value: '',
+            score: 0,
+            loading: true,
+            showScore: false
+        };
     }
     componentWillMount() {
         this.fetchData();
-        document.getElementById('quiz-body').classList.add('body-slideout');
     }
     fetchData() {
         numberList = [];
@@ -81,15 +87,19 @@ class TaskBuilder extends React.Component {
                         Your score:
                         <span>{this.state.score}</span>
                     </div>
-                    <h2>What is this instrument called?</h2>
-                    <img src={this.state.questions[this.state.currentImg].image} alt=""/>
-                    <form onSubmit={this.handleSubmit.bind(this)}>
-                        <div className="form-group">
-                            <input type="text" className="form-control mt-3" placeholder="Answer"
-                                   value={this.state.value} onChange={this.handleChange.bind(this)}/>
-                            <button className="btn btn-default mt-3" type="submit">Submit answer</button>
-                        </div>
-                    </form>
+                    
+                    <div className="quiz">
+                        <h2 className="quiz__heading">What is this instrument called?</h2>
+                        <img className="quiz__img img-fluid" src={this.state.questions[this.state.currentImg].image} alt=""/>
+                        <form onSubmit={this.handleSubmit.bind(this)}>
+                            <div className="form-group">
+                                <input type="text" className="form-control mt-3" placeholder="Answer"
+                                       value={this.state.value} onChange={this.handleChange.bind(this)}/>
+                                <button className="btn btn-default mt-3" type="submit">Submit answer</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                     <div id="overlay" className="sidebar-overlay"></div>
                 </div>
             )
