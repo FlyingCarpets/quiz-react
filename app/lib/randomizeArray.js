@@ -1,4 +1,4 @@
-export function randomizeArray (array) {
+function randomizeArray (array) {
     let counter = array.length;
     while (counter > 0) {
         let index = Math.floor(Math.random() * counter);
@@ -9,3 +9,5 @@ export function randomizeArray (array) {
     }
     return array;
 }
+
+export default randomizeArray;

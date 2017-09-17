@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './containers/Header/Header';
-import User from './containers/User/User';
+import Task from './containers/Task/Task';
 import Footer from './containers/Footer/Footer';
 
 export default class App extends React.Component {
@@ -8,7 +8,7 @@ export default class App extends React.Component {
         return (
             <div className="container">
                 <Header/>
-                <User/>
+                <Task/>
                 <Footer/>
             </div>
         )

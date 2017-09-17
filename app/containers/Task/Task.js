@@ -1,34 +1,78 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTasks, selectRandomTask } from '../../actions/taskActions';
-import './User.scss';
+import { fetchTasks, selectNextTask } from '../../actions/taskActions';
+import './Task.scss';
 
 class Task extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = {
+            value: '',
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        this.fetchData();
-    }
-    fetchData() {
         this.props.fetchTasks();
-        // this.selectRandomTask();
     }
-    selectRandomTask() {
-        this.props.selectRandomTask(this.props.taskData)
+    handleChange(e) {
+        this.setState({
+            value: e.target.value
+        });
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+
+        const {
+            taskData: {
+                currentTask
+            }
+        } = this.props;
+
+        if (this.state.value === currentTask.answer) {
+            alert('correct');
+            this.props.selectNextTask();
+        } else {
+            alert('Boo');
+        }
+
+        this.setState({value: ''});
     }
     render() {
+        const {
+            taskData: {
+                currentTask,
+                loading
+            }
+        } = this.props;
+
         return (
             <div className="container">
                 <h2 className="quiz__heading">What is this instrument called?</h2>
-                <img className="quiz__img img-fluid" src='' alt=""/>
-                <form onSubmit=''>
-                    <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Answer"
-                               value='' onChange=''/>
-                        <button className="btn" type="submit">Submit answer</button>
+                { loading
+                    ?
+                    <div className="spinner" />
+                    :
+                    <div>
+                        { currentTask !== 'finish'
+                            ?
+                            <div>
+                                <img className="quiz__img img-fluid" src={ currentTask.image } alt=""/>
+                                <form onSubmit={ this.handleSubmit }>
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" placeholder="Answer"
+                                               value={ this.state.value } onChange={ this.handleChange } />
+                                        <button className="btn" type="submit">Submit answer</button>
+                                    </div>
+                                </form>
+                            </div>
+                            :
+                            <div>The end</div>
+                        }
                     </div>
-                </form>
+                }
             </div>
         )
     }
@@ -36,7 +80,7 @@ class Task extends React.Component {
 
 export default connect(
     (state) => ({ taskData: state.taskData }),
-    { fetchTasks, selectRandomTask }
+    { fetchTasks, selectNextTask }
 )(Task);
 
 //

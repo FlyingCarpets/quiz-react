@@ -1,17 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 class Footer extends React.Component {
     render () {
-        const { name, surname } = this.props.userData;
-
         return (
             <footer>
                 <div className="row">
                     <div className="col-md-6">Footer</div>
                     <div className="col-md-6">
                         Footer user name:
-                        <strong>{name} {surname}</strong>
+                        <strong>Footer</strong>
                     </div>
                 </div>
             </footer>
@@ -19,6 +16,4 @@ class Footer extends React.Component {
     }
 }
 
-export default connect(
-    (state) => ({userData: state.userData})
-)(Footer);
+export default Footer;

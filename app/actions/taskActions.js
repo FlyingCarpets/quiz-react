@@ -1,34 +1,25 @@
 import axios from 'axios';
 import randomizeArray from '../lib/randomizeArray';
 
-let taskLength;
-function countTasks(tasks) {
-
-    console.log(tasks.length);
-
-    for(let i = 0; i < tasks.length; i++) {
-        console.log(tasks[i]);
-        taskLength.push(i);
+export function selectNextTask () {
+    return {
+        type: "SELECT_NEXT_TASK",
+        payload: {}
     }
-
-    console.log(taskLength);
-    return taskLength;
 }
 
 export function fetchTasks() {
     return function(dispatch) {
+        dispatch({type: "BEFORE_FETCH_TASKS", payload: true });
+
         axios.get("https://raw.githubusercontent.com/FlyingCarpets/quiz-react/master/assets/data/questions.json")
             .then((response) => {
-                dispatch({type: "FETCH_TASKS", payload: response.data});
-                countTasks(response.data);
+                dispatch({type: "FETCH_TASKS", payload: randomizeArray(response.data)});
             })
-            .then((response) => {
-                console.log(response);
+            .then(() => {
+                dispatch({type: "SELECT_CURRENT_TASK", payload: 0});
+                dispatch({type: "AFTER_FETCH_TASKS", payload: false });
             })
             .catch((err) => {})
     }
-}
-
-export function selectRandomTask(taskList) {
-    console.log(taskList);
 }

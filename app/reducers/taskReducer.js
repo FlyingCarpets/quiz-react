@@ -1,14 +1,31 @@
 const initialState = {
     tasks: [],
-    taskLength: '',
-    currentTask: []
+    currentTask: '',
+    loading: false
 };
 
 const taskReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'BEFORE_FETCH_TASKS': {
+            return {...state, loading: true};
+        }
         case 'FETCH_TASKS': {
             return {...state, tasks: state.tasks.concat(action.payload)};
-            break;
+        }
+        case 'SELECT_CURRENT_TASK': {
+            return {...state, currentTask: state.tasks[action.payload]};
+        }
+        case 'AFTER_FETCH_TASKS': {
+            return {...state, loading: false};
+        }
+        case 'SELECT_NEXT_TASK': {
+            let currentTaskIndex = state.tasks.indexOf(state.currentTask);
+
+            if (currentTaskIndex+1 < state.tasks.length) {
+                return {...state, currentTask: state.tasks[currentTaskIndex+1]};
+            } else {
+                return {...state, currentTask: 'finish'};
+            }
         }
     }
     return state;
