@@ -1,0 +1,16 @@
+.router-link {
+  color: black;
+
+  &.active {
+    color: red;
+  }
+
+  &:hover {
+    color: red;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
