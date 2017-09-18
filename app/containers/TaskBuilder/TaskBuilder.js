@@ -69,6 +69,17 @@ class TaskBuilder extends React.Component {
     closeModal() {
         this.setState({showScore: false});
     }
+    // TODO: for creating/posting new user
+    // createUser() {
+    //     fetch('/api/users', {
+    //         method: 'post',
+    //         headers: {
+    //             'Accept': 'application/json, text/plain, */*',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({name: 'New user name'})
+    //     })
+    // }
     render() {
         if(this.state.loading == true){
             return (
@@ -101,6 +112,9 @@ class TaskBuilder extends React.Component {
                     </div>
                     
                     <div id="overlay" className="sidebar-overlay"></div>
+
+                    {/* TODO: for creating new users */}
+                    {/*<button onClick={ this.createUser.bind(this) }>Create user</button>*/}
                 </div>
             )
         }
