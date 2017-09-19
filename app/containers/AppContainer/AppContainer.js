@@ -5,7 +5,8 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import TaskBuilder from '../TaskBuilder/TaskBuilder';
+import Task from '../Task/Task';
+import Footer from '../Footer/Footer';
 import './AppContainer.scss';
 
 const Home = () => <h1>Home</h1>;
@@ -33,10 +34,11 @@ class AppContainer extends React.Component {
                     </div>
 
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/music" component={TaskBuilder} />
+                        <Route exact path="/" component={ Home } />
+                        <Route path="/music" component={ Task } />
                         <Route render={() => <h1>Page not found</h1>} />
                     </Switch>
+                    <Footer />
                 </div>
             </Router>
         )
