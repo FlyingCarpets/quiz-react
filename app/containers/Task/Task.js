@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTasks, selectNextTask } from '../../actions/taskActions';
+import { fetchTasks, selectNextTask, countScore } from '../../actions/taskActions';
 import './Task.scss';
 
 class Task extends React.Component {
@@ -34,6 +34,7 @@ class Task extends React.Component {
         if (this.state.value === currentTask.answer) {
             alert('correct');
             this.props.selectNextTask();
+            this.props.countScore();
         } else {
             alert('Boo');
         }
@@ -94,5 +95,9 @@ class Task extends React.Component {
 
 export default connect(
     (state) => ({ taskData: state.taskData }),
-    { fetchTasks, selectNextTask }
+    {
+        fetchTasks,
+        selectNextTask,
+        countScore
+    }
 )(Task);

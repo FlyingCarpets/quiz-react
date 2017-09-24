@@ -5,3 +5,8 @@
     right: 0;
   }
 }
+
+.slideout-panel {
+  z-index:  auto;
+  will-change: inherit;
+}

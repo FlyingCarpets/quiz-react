@@ -1,5 +1,11 @@
-.navbar-tabs {
+.navbar-wrapper {
   background-color: $color-navbar;
+}
+
+.navbar-tabs {
+  margin-bottom: 0;
+  display: inline-block;
+  width: 60%;
 
   .navbar-tabs__item {
     display: inline-block;

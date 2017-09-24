@@ -5,8 +5,11 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+
 import Task from '../Task/Task';
 import Footer from '../Footer/Footer';
+import ModalWindow from '../ModalWindow/ModalWindow';
+import NavbarScore from '../../components/NavbarScore/NavbarScore';
 import './AppContainer.scss';
 
 const Home = () => <h1>Home</h1>;
@@ -16,7 +19,7 @@ class AppContainer extends React.Component {
         return (
             <Router>
                 <div className="app-wrapper">
-                    <div>
+                    <div className="navbar-wrapper">
                         <ul className="navbar-tabs">
                             <li className="navbar-tabs__item">
                                 <NavLink exact activeClassName="active" to="/" className="router-link">Home</NavLink>
@@ -31,6 +34,7 @@ class AppContainer extends React.Component {
                                 <NavLink to="/literature" className="router-link">Literature</NavLink>
                             </li>
                         </ul>
+                        <NavbarScore />
                     </div>
 
                     <Switch>
@@ -39,6 +43,7 @@ class AppContainer extends React.Component {
                         <Route render={() => <h1>Page not found</h1>} />
                     </Switch>
                     <Footer />
+                    <ModalWindow />
                 </div>
             </Router>
         )
