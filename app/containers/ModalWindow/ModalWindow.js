@@ -27,6 +27,7 @@ class ModalWindow extends React.Component {
                 score
             }
         } = this.props;
+
         return (
             <div>
                 <div id="customModal"
