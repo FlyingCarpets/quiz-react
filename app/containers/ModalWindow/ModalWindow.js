@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Modal } from 'bootstrap.native';
 
 class ModalWindow extends React.Component {
     componentDidMount() {
         this.initModal();
+    }
+    componentDidUpdate() {
+        this.handleModalOpen();
     }
     initModal() {
         this.modal = new Modal(this.refs.customModal,
@@ -13,19 +17,18 @@ class ModalWindow extends React.Component {
             });
     }
     handleModalOpen() {
-        this.modal.show();
+        if (this.props.taskData.currentTask === "finish") {
+            this.modal.show();
+        }
     }
     render() {
+        const {
+            taskData: {
+                score
+            }
+        } = this.props;
         return (
             <div>
-                <button onClick={() => this.handleModalOpen()}
-                        type="button"
-                        data-toggle="modal"
-                        data-target="#customModal"
-                        className="btn">
-                    Open modal
-                </button>
-
                 <div id="customModal"
                      ref="customModal"
                      className="modal fade"
@@ -51,7 +54,7 @@ class ModalWindow extends React.Component {
                             </div>
 
                             <div className="modal-body">
-                                modal body
+                                Your score: { score }
                             </div>
 
                             <div className="modal-footer">
@@ -68,4 +71,7 @@ class ModalWindow extends React.Component {
     }
 }
 
-export default ModalWindow;
+export default connect(
+    (state) => ({ taskData: state.taskData }),
+    null
+)(ModalWindow);

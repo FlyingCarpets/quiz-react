@@ -68,7 +68,7 @@ class Task extends React.Component {
                     <div className="spinner" />
                     :
                     <div>
-                        { currentTask !== 'finish'
+                        { currentTask !== "finish"
                             ?
                             <div>
                                 <img className="quiz__img img-fluid" src={ currentTask.image } alt=""/>
