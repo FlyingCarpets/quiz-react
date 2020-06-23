@@ -3,5 +3,10 @@
     "config:base",
     "schedule:earlyMondays",
     "group:all"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": ["major", "minor"]
+    }
   ]
 }
