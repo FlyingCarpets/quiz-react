@@ -4,7 +4,7 @@
     "schedule:earlyMondays",
     "group:all"
   ],
-  "assigneesFromCodeOwners:true",
+  "assigneesFromCodeOwners": true,
   "packageRules": [
     {
       "updateTypes": ["major", "minor"]
