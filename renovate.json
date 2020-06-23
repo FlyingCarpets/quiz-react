@@ -2,9 +2,9 @@
   "extends": [
     "config:base",
     "schedule:earlyMondays",
-    "group:all",
-    "assigneesFromCodeOwners:true"
+    "group:all"
   ],
+  "assigneesFromCodeOwners:true",
   "packageRules": [
     {
       "updateTypes": ["major", "minor"]
