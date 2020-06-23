@@ -5,5 +5,10 @@
     "group:all"
   ],
   "assigneesFromCodeOwners": true,
-  "assigneesSampleSize": 1
+  "assigneesSampleSize": 1,
+  "packageRules": [
+    {
+      "updateTypes": ["major", "minor"]
+    }
+  ]
 }
