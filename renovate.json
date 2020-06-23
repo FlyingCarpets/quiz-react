@@ -3,7 +3,7 @@
     "config:base",
     "schedule:earlyMondays",
     "group:all",
-    "assigneesFromCodeOwners:true",
+    "assigneesFromCodeOwners:true"
   ],
   "packageRules": [
     {
