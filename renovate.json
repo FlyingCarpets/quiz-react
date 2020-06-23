@@ -8,7 +8,7 @@
   "assigneesSampleSize": 1,
   "packageRules": [
     {
-      "updateTypes": ["major", "minor"]
+      "updateTypes": ["major", "minor", "patch"]
     }
   ]
 }
